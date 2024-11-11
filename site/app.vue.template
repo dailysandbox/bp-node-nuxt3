@@ -1,0 +1,11 @@
+<script setup>
+</script>
+
+<template> 
+	<Head>
+		<Title>{{DOMAIN_NAME}}</Title>
+	</Head>
+	<NuxtPage />
+</template>
+
+<style lang="less" scoped></style>

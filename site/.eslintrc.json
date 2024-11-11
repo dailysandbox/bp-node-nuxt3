@@ -1,0 +1,44 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "extends": ["@nuxt/eslint-config", "plugin:vue/vue3-recommended"],
+    "plugins": [],
+    "rules": {
+        "vue/no-unused-vars": "warn",
+        "no-unused-vars": "warn",
+        "no-undef": 0,
+        "prefer-const": "off",
+        "vue/multi-word-component-names": 0,
+        "indent": [2, "tab"],
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "no-unused-vars": "warn",
+        "nonblock-statement-body-position": ["error", "below"],
+        "keyword-spacing": [2, { "before": true, "after": true }],
+        "lines-between-class-members": ["error", "never"],
+        "curly": ["error", "multi-or-nest"],
+        "padding-line-between-statements": ["error",
+            { "blankLine": "always", "prev": ["block-like"], "next": "*"},
+            { "blankLine": "always", "prev": "*", "next": "if" },
+            { "blankLine": "always", "prev": "*", "next": "return" }
+        ],
+        "vue/html-indent": ["error", "tab", {
+            "attribute": 1,
+            "baseIndent": 1,
+            "closeBracket": 0,
+            "alignAttributesVertically": true,
+            "ignores": []
+        }],
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": {
+                "max": 10
+            },
+            "multiline": {
+                "max": 10
+            }
+        }],
+        "quotes": ["error", "single", { "allowTemplateLiterals": true, "avoidEscape": true }]
+    }
+}

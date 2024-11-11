@@ -1,0 +1,49 @@
+api.{{DOMAIN_NAME}} {
+    # Proxy all traffic to the Node.js server
+    reverse_proxy http://host.docker.internal:3000 {
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    tls /etc/caddy/certs/local.cert.pem /etc/caddy/certs/local.key.pem
+
+    encode gzip
+    log {
+        output stdout
+        format console
+    }
+}
+
+{{DOMAIN_NAME}} {
+    reverse_proxy host.docker.internal:3500 {
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    tls /etc/caddy/certs/local.cert.pem /etc/caddy/certs/local.key.pem
+
+    encode gzip
+    log {
+        output stdout
+        format console
+    }
+}
+
+ws.{{DOMAIN_NAME}} {
+    # Proxy all traffic to the uWebSockets.js server
+    reverse_proxy http://host.docker.internal:9001 {
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    tls /etc/caddy/certs/local.cert.pem /etc/caddy/certs/local.key.pem
+
+    encode gzip
+    log {
+        output stdout
+        format console
+    }
+}

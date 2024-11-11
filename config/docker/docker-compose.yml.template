@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+    node:
+        build:
+            context: ../..  # Context is set to two levels up (root directory)
+            dockerfile: Dockerfile  # Explicitly define the Dockerfile in the root
+        image: {{PROJECT_NAME}}-node:latest
+        container_name: {{PROJECT_NAME}}-node
+        volumes:
+            - ../../server/app:/var/www
+        networks:
+            - webnet
+
+    websocket:
+        image: {{PROJECT_NAME}}-ws:latest
+        container_name: {{PROJECT_NAME}}-ws
+        build:
+            context: ../..  # Context is set to two levels up (root directory)
+            dockerfile: WSDockerfile  # separate Dockerfile for WebSocket server
+        volumes:
+            - ../../ws/app:/var/www
+        networks:
+            - webnet
+
+    caddy:
+        image: caddy:alpine
+        container_name: {{PROJECT_NAME}}-caddy
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ../../config/caddy/Caddyfile:/etc/caddy/Caddyfile
+            - {{PROJECT_NAME}}-caddy-data:/data
+            - {{PROJECT_NAME}}-caddy-config:/config
+            - ../../config/certs:/etc/caddy/certs  # Map the certs directory for custom SSL
+        networks:
+            - webnet
+        depends_on:
+            - node
+            - websocket
+
+networks:
+    webnet:
+
+volumes:
+    {{PROJECT_NAME}}-caddy-data:
+    {{PROJECT_NAME}}-caddy-config:

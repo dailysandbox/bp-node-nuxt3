@@ -1,0 +1,21 @@
+# Use the official Node.js image
+FROM node:20.11.0
+
+# Set the working directory
+WORKDIR /var/www
+
+# Copy your WebSocket server files into the container
+COPY ./ws/app /var/www
+
+# Copy the SSL certificates into the container (if needed)
+COPY ./config/certs/local.cert.pem /etc/ssl/certs/local.cert.pem
+COPY ./config/certs/local.key.pem /etc/ssl/private/local.key.pem
+
+# Install dependencies
+RUN npm install
+
+# Expose the WebSocket server port
+EXPOSE 9001
+
+# Command to run your WebSocket server
+CMD ["node", "server.js"]

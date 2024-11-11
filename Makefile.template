@@ -1,0 +1,33 @@
+CADDY_CONTAINER_NAME={{PROJECT_NAME}}-caddy
+NODE_CONTAINER_NAME={{PROJECT_NAME}}-node
+WS_CONTAINER_NAME={{PROJECT_NAME}}-ws
+
+# Target to build and start Docker containers
+build:
+	docker-compose -f ./config/docker/docker-compose.yml build caddy
+	docker-compose -f ./config/docker/docker-compose.yml up -d
+
+# Target to start Docker containers without rebuilding
+start:
+	docker-compose -f ./config/docker/docker-compose.yml up -d
+
+# Target to stop Docker containers
+stop:
+	docker-compose -f ./config/docker/docker-compose.yml down
+
+# Target to clean up Docker containers, volumes, networks
+clean:
+	docker-compose -f ./config/docker/docker-compose.yml down -v
+	docker system prune -f
+
+# Target to restart the Caddy container
+restart-caddy:
+	docker restart $(CADDY_CONTAINER_NAME)
+
+# Target to restart the Node container
+restart-node:
+	docker restart $(NODE_CONTAINER_NAME)
+
+# Target to restart the WS container
+restart-node:
+	docker restart $(WS_CONTAINER_NAME)
