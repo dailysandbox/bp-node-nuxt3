@@ -6,13 +6,12 @@ Welcome to the project setup guide! This document will walk you through the step
 
 This project utilizes the following technologies as defined in the `package.json`:
 
-- **Vue.js**: A progressive JavaScript framework used for building user interfaces.
-- **Nuxt.js**: A framework built on top of Vue.js that enables server-side rendering, static site generation, and more.
-- **PrimeVue**: A rich set of UI components for Vue.js, used to build the user interface of the application.
+- **Vue.js**: A progressive JavaScript framework used for building user interfaces. (v3)
+- **Nuxt.js**: A framework built on top of Vue.js that enables server-side rendering, static site generation, and more. (v3)
+- **Node.js**: A cross-platform runtime environment for executing JavaScript code. (v20.11.0)
 - **Pinia**: A state management library for Vue.js, serving as the successor to Vuex.
 - **Axios**: A promise-based HTTP client for making requests to the backend.
 - **Less**: A CSS preprocessor that extends CSS with dynamic behavior such as variables, mixins, and functions.
-- **ESLint**: A tool for identifying and fixing problems in JavaScript code, ensuring code quality and consistency.
 
 These dependencies ensure that the project is structured with modern front-end practices, enabling a seamless development experience.
 
@@ -65,7 +64,6 @@ The `install.sh` script will guide you through setting up your project, generati
    
    - **Domain Name**: Enter the domain name you want to use (e.g., `mysite.com`).
    - **Project Name**: Enter the project name. This name will be sanitized to replace any non-alphabetic characters with dashes and reduce multiple dashes to a single dash.
-   - **Lucee Admin Password**: Enter a password for the Lucee admin interface.
 
 5. **Remove Template Files (Optional)**:
 
