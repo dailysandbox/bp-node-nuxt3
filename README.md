@@ -9,6 +9,7 @@ This project utilizes the following technologies as defined in the `package.json
 - **Vue.js**: A progressive JavaScript framework used for building user interfaces. (v3)
 - **Nuxt.js**: A framework built on top of Vue.js that enables server-side rendering, static site generation, and more. (v3)
 - **Node.js**: A cross-platform runtime environment for executing JavaScript code. (v20.11.0)
+- **uWebsockets.js**: µWebSockets.js is a standards compliant web server written in 10,000 lines of C++. (v20.49.0)
 - **Pinia**: A state management library for Vue.js, serving as the successor to Vuex.
 - **Axios**: A promise-based HTTP client for making requests to the backend.
 - **Less**: A CSS preprocessor that extends CSS with dynamic behavior such as variables, mixins, and functions.
